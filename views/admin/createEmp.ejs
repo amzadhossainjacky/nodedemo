@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login page</title>
+	
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+	<h2>Login Page</h2>
+
+	<form id="insert">
+        
+        
+		Ename: <input type="text" name="ename" id="ename"><br>
+		Cname: <input type="text" name="cname" id="cname"><br>
+        contact: <input type="number" name="contact" id="contact"><br>
+        
+		Username: <input type="text" name="uname" id="uname"><br>
+        Password: <input type="password" name="password" id="password"><br>
+        
+		<input type="submit" value="Submit">
+	</form>
+	<script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/proper.js"></script>
+	<script src="/assets/js/bootstrap.js"></script>
+	
+	<script>
+
+		/* var edata = {
+			ename: document.getElementById('ename').value,
+			cname: document.getElementById('cname').value,
+			contact: document.getElementById('contact').value,
+			uname: document.getElementById('uname').value,
+			password: document.getElementById('password').value
+		} */
+
+		$(document).ready(function(){
+			$('#insert').submit(function (e) { 
+			e.preventDefault();
+			var edata = $(this).serialize();
+
+			$.ajax({
+			type: 'POST',
+			url: '/home/create_employee',
+			data: edata,
+			success: function (result) {
+				alert(result.msg);
+			},
+			error: function(result){
+				console.log("error");
+			}
+			
+			});		
+			});
+		});
+		
+	</script>
+</body>
+</html>

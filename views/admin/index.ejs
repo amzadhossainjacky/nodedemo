@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login page</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<h2>Login Page</h2>
+
+	<form method="post" onsubmit="return validation()">
+		
+		<%= if (error.uname) { %>
+			<p><%= error.uname.msg %> </p>
+		<%= } %>
+
+		Username: <input type="text" name="uname" id="name"><br>
+		
+		<%= if (error.password) { %>
+			<p><%= error.password.msg %> </p>
+		<%= } %>
+		Password: <input type="password" name="password" id="password"><br>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
